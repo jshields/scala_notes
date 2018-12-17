@@ -1,3 +1,4 @@
+
 val helloWorld = List("Hello", "World").mkString("", ", ", "!")
 
 
@@ -12,30 +13,39 @@ println(doubleIt(5))
 assert(1.+(2) == 1 + 2)
 
 
-val foo : List[Int] = List(1, 2, 3, 4, 5)
 
+
+val foo : List[Int] = List(1, 2, 3, 4, 5)
 
 println("Expanded anonymous function syntax passed to foreach")
 foo.foreach(x => println(x*2))
-
 
 /*
 Won't work
 _ is used to create a partially applied function, attempting to multiply _ by two won't work,
 because it's a lazy value / we don't know what to multiply by two at that point (?)
+
+Shouldn't the short form anonymous function syntax work here since we are trying to pass 1 argument?
 */
 // foo.foreach(_ => println(_*2))
 // foo.foreach(_ : Int => println(_*2))
+// foo.foreach(println(_*2))
+
+
+// long form and short form work for method calls
+val bar : List[String] = List("Foo", "Bar", "Baz")
+println(bar.map(x => x.toLowerCase()))  // full syntax anonymous function
+println(bar.map(_.toUpperCase()))  // short form anonymous function
 
 
 
-// partially applied addition function with two parameters passed as reduce function
+// partially applied (?) anonymous addition function with two parameters passed as reduce function
+// Are we using shorthand anonymous function or partially applied function or both?
 val sum = foo.reduceLeft(_+_)
 assert(sum == 15)
 println(s"Sum of list items is $sum")
 
 
-// This works
 println("Fully named function with appropriate return type passed to foreach")
 def printTimesTwo(x : Int) : Unit = println(x * 2)
 foo.foreach(printTimesTwo)
@@ -47,9 +57,3 @@ foo.foreach(println(_))
 
 println("println function passed to foreach")
 foo.foreach(println)
-
-
-// Using _ as `x => x`
-val bar : List[String] = List("Foo", "Bar", "Baz")
-println(bar.map(x => x.toLowerCase()))  // full syntax anonymous function
-println(bar.map(_.toUpperCase()))  // short form anonymous function
