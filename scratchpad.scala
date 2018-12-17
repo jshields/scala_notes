@@ -51,5 +51,5 @@ foo.foreach(println)
 
 // Using _ as `x => x`
 val bar : List[String] = List("Foo", "Bar", "Baz")
-println(bar.map(x => x.toLowerCase()))
-println(bar.map(_.toUpperCase()))
+println(bar.map(x => x.toLowerCase()))  // full syntax anonymous function
+println(bar.map(_.toUpperCase()))  // short form anonymous function
