@@ -15,7 +15,7 @@ assert(1.+(2) == 1 + 2)
 val foo : List[Int] = List(1, 2, 3, 4, 5)
 
 
-println("Expanded anonymous function syntax, function passed to foreach")
+println("Expanded anonymous function syntax passed to foreach")
 foo.foreach(x => println(x*2))
 
 
@@ -23,6 +23,8 @@ foo.foreach(x => println(x*2))
 // _ is used to create a partially applied function, attempting to multiply _ by two won't work, because it's a lazy value / we don't know what to multiply by two at that point (?)
 // foo.foreach(_ => println(_*2))
 // foo.foreach(_ : Int => println(_*2))
+
+
 
 // partially applied addition function with two parameters passed as reduce function
 val sum = foo.reduceLeft(_+_)
@@ -37,14 +39,14 @@ foo.foreach(printTimesTwo)
 
 
 println("partially applied println foreach")
-// valid but there is no value to it, just pass the println function as the function to call
+// valid but the same as passing the println function directly
 foo.foreach(println(_))
-
 
 println("println function passed to foreach")
 foo.foreach(println)
 
 
-
-
-
+// Using _ as `x => x`
+val bar : List[String] = List("Foo", "Bar", "Baz")
+println(bar.map(x => x.toLowerCase()))
+println(bar.map(_.toUpperCase()))
