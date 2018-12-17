@@ -8,7 +8,8 @@ println(doubleIt(5))
 
 // attempting to use postfix operator notation yields "value doubleIt is not a member of Unit"
 // println expects to return Unit (like Java "void")
-// But why doesn't operator notation work here?
+// But why doesn't operator notation work here? Postfix only valid for 0-arity methods. This is a function with an argument
+// https://docs.scala-lang.org/style/method-invocation.html#postfix-notation
 //println doubleIt(5)
 assert(1.+(2) == 1 + 2)
 
