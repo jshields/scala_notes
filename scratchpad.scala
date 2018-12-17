@@ -19,8 +19,11 @@ println("Expanded anonymous function syntax passed to foreach")
 foo.foreach(x => println(x*2))
 
 
-// Won't work
-// _ is used to create a partially applied function, attempting to multiply _ by two won't work, because it's a lazy value / we don't know what to multiply by two at that point (?)
+/*
+Won't work
+_ is used to create a partially applied function, attempting to multiply _ by two won't work,
+because it's a lazy value / we don't know what to multiply by two at that point (?)
+*/
 // foo.foreach(_ => println(_*2))
 // foo.foreach(_ : Int => println(_*2))
 
